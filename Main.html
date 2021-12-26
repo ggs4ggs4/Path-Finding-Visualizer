@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="js.js" defer></script>
+</head>
+
+<body>
+    <div class="heading">
+        <h1 style="display:inline-block;">&nbsp;&nbsp;&nbsp;&nbsp;</h1>
+        <h1 id="Status" style="display:inline-block;">Welcome</h1>
+        <div style="display:inline-block;position:fixed;left:950px;padding: 8px;">
+            <h2 style="display:inline-block;">Choose the Algorithm :</h2>
+            <input type="radio" id="DFS" name="Pathfinding Algorithm" value="DFS">
+            <label for="DFS">DFS</label>
+            <input type="radio" id="BFS" name="Pathfinding Algorithm" value="BFS">
+            <label for="BFS">BFS</label>
+            <input type="radio" id="BFSq" name="Pathfinding Algorithm" value="BFSq">
+            <label for="BFSq">BFSqueue</label>
+            <input type="radio" id="Dijkstra" name="Pathfinding Algorithm" value="Dijkstra">
+            <label for="Dijkstra">Dijkstra</label>
+            
+        </div>
+    </div>
+    
+    <div class="main"></div>
+    <div class="buttons">
+        <div style="padding: 10px;">
+            <button onclick="Border()">Set Border</button>
+            <button onclick="Start_point()">Set Start-Point</button>
+            <button onclick="End_point()">Set End-Point</button>
+            <button onclick="Solve()" style="position:absolute; left:1440px;">Solve</button>
+        </div>
+    </div>
+    Made by- Ganesh, Sakshsam, Tushar
+</body>
+</html>
+
