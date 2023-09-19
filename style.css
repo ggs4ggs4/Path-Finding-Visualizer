@@ -128,7 +128,7 @@
         }
 
         .heading{
-            width: 1516px;
+            width: 100%;
             border-radius: 15px;
             background-color: plum;
             display:inline-block;
