@@ -1,8 +1,13 @@
 
 //=========================================================================
+let heading = document.querySelector(".heading");
 let main = document.querySelector(".main");
-let rowcount = 26;
-let columncount = 68;
+let buttons = document.querySelector(".buttons");
+let width = screen.width;
+let height = screen.height;
+// console.log(height)
+let rowcount = Math.floor((height-heading.offsetHeight-buttons.offsetHeight)/21.63)-4;
+let columncount = Math.floor((width)/21.6);
 let flag = false;
 let borderflag = false;
 let startflag = false;
@@ -58,7 +63,7 @@ async function bfs(i, j,idprev) {
     path[id]=idprev;
     if (document.getElementById(id).classList.contains("enderblock")) {
         solved = true;
-        document.getElementById("Status").innerHTML = "dONE";
+        document.getElementById("Status").innerHTML = "DONE!";
         let nex=id;
         console.log(path);
         while(nex!=path[nex]){
@@ -104,7 +109,7 @@ async function dfs(i, j,idprev) {
     path[id]=idprev;
     if (document.getElementById(id).classList.contains("enderblock")) {
         solved = true;
-        document.getElementById("Status").innerHTML = "dONE";
+        document.getElementById("Status").innerHTML = "DONE!";
         let nex=id;
         console.log(path);
         while(nex!=path[nex]){
@@ -153,7 +158,7 @@ async function bfsq(i, j,idprev) {
         
         if(document.getElementById(id).classList.contains("enderblock")){
             solved=true;
-            document.getElementById("Status").innerHTML = "dONE";
+            document.getElementById("Status").innerHTML = "DONE!";
             break;
         }
         if (document.getElementById(id).classList.contains("borderblock")||document.getElementById(id).classList.contains("solblock")) {
@@ -235,7 +240,7 @@ async function Dijkstra(i, j,idprev) {
         visit[id] = 1;        
         if(document.getElementById(id).classList.contains("enderblock")){
             solved=true;
-            document.getElementById("Status").innerHTML = "dONE";
+            document.getElementById("Status").innerHTML = "DONE!";
             break;
         }
         if (document.getElementById(id).classList.contains("borderblock")||document.getElementById(id).classList.contains("solblock")) {
@@ -328,65 +333,79 @@ function Solve() {
 
 }
 //=========================================================================
-for (let i = 0; i < rowcount; i++) {
-    let row = document.createElement("div");
-    row.classList.add("row");
-    main.appendChild(row);
-    for (let j = 0; j < columncount; j++) {
-        let block = document.createElement("div");
-        block.id = "" + i + "," + j;
-        block.classList.add("movementblock");
-        block.onmouseover = () => {
-            if (flag && borderflag) {
-                block.classList.remove("movementblock");
-                block.classList.add("borderblock");
-                block.style.animationPlayState = "running";
-                console.log(block.id);
-            }
-        };
-        block.onclick = () => {
-            if (borderflag) {
-                block.classList.remove("movementblock");
-                block.classList.add("borderblock");
-                block.style.animationPlayState = "running";
-                console.log(block.id);
-            }
-            else if (block.id != startpoint && startpoint && startflag && document.getElementById(block.id).classList.contains("movementblock")) {
-                block.classList.remove("movementblock");
-                block.classList.add("starterblock");
-                block.style.animationPlayState = "running";
-                document.getElementById(startpoint).style.animationPlayState = "paused";
-                document.getElementById(startpoint).classList.remove("starterblock");
-                document.getElementById(startpoint).classList.add("movementblock");
-                startpoint = block.id;
-                console.log(block.id, startpoint);
-            }
-            else if (block.id != startpoint && startflag && document.getElementById(block.id).classList.contains("movementblock")) {
-                block.classList.remove("movementblock");
-                block.classList.add("starterblock");
-                block.style.animationPlayState = "running";
-                startpoint = block.id;
-                console.log(block.id, startpoint);
-            }
-            else if (block.id != endpoint && endpoint && endflag && document.getElementById(block.id).classList.contains("movementblock")) {
-                block.classList.remove("movementblock");
-                block.classList.add("enderblock");
-                block.style.animationPlayState = "running";
-                document.getElementById(endpoint).style.animationPlayState = "paused";
-                document.getElementById(endpoint).classList.remove("enderblock");
-                document.getElementById(endpoint).classList.add("movementblock");
-                endpoint = block.id;
-                console.log(block.id, endpoint);
-            }
-            else if (block.id != endpoint && endflag && document.getElementById(block.id).classList.contains("movementblock")) {
-                block.classList.remove("movementblock");
-                block.classList.add("enderblock");
-                block.style.animationPlayState = "running";
-                endpoint = block.id;
-                console.log(block.id, endpoint);
-            }
-        };
-        row.appendChild(block);
+function gen(){
+    flag = false;
+    borderflag = false;
+    startflag = false;
+    endflag = false;
+    solved = false;
+    startpoint = '';
+    endpoint = '';
+    visited = {};
+    path = {};
+    main.innerHTML = '';
+    for (let i = 0; i < rowcount; i++) {
+        let row = document.createElement("div");
+        row.classList.add("row");
+        main.appendChild(row);
+        for (let j = 0; j < columncount; j++) {
+            let block = document.createElement("div");
+            block.id = "" + i + "," + j;
+            block.classList.add("movementblock");
+            block.onmouseover = () => {
+                if (flag && borderflag) {
+                    block.classList.remove("movementblock");
+                    block.classList.add("borderblock");
+                    block.style.animationPlayState = "running";
+                    console.log(block.id);
+                }
+            };
+            block.onclick = () => {
+                if (borderflag) {
+                    block.classList.remove("movementblock");
+                    block.classList.add("borderblock");
+                    block.style.animationPlayState = "running";
+                    console.log(block.id);
+                }
+                else if (block.id != startpoint && startpoint && startflag && document.getElementById(block.id).classList.contains("movementblock")) {
+                    block.classList.remove("movementblock");
+                    block.classList.add("starterblock");
+                    block.style.animationPlayState = "running";
+                    document.getElementById(startpoint).style.animationPlayState = "paused";
+                    document.getElementById(startpoint).classList.remove("starterblock");
+                    document.getElementById(startpoint).classList.add("movementblock");
+                    startpoint = block.id;
+                    console.log(block.id, startpoint);
+                }
+                else if (block.id != startpoint && startflag && document.getElementById(block.id).classList.contains("movementblock")) {
+                    block.classList.remove("movementblock");
+                    block.classList.add("starterblock");
+                    block.style.animationPlayState = "running";
+                    startpoint = block.id;
+                    console.log(block.id, startpoint);
+                }
+                else if (block.id != endpoint && endpoint && endflag && document.getElementById(block.id).classList.contains("movementblock")) {
+                    block.classList.remove("movementblock");
+                    block.classList.add("enderblock");
+                    block.style.animationPlayState = "running";
+                    document.getElementById(endpoint).style.animationPlayState = "paused";
+                    document.getElementById(endpoint).classList.remove("enderblock");
+                    document.getElementById(endpoint).classList.add("movementblock");
+                    endpoint = block.id;
+                    console.log(block.id, endpoint);
+                }
+                else if (block.id != endpoint && endflag && document.getElementById(block.id).classList.contains("movementblock")) {
+                    block.classList.remove("movementblock");
+                    block.classList.add("enderblock");
+                    block.style.animationPlayState = "running";
+                    endpoint = block.id;
+                    console.log(block.id, endpoint);
+                }
+            };
+            row.appendChild(block);
+        }
     }
 }
 //=========================================================================
+gen()
+document.body.style.zoom = 1

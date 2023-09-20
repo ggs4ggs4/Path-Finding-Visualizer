@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="js.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="heading">
+        
+        <h1 id="Status" style="margin: 0%;height: 100%; vertical-align: middle;display: flex;align-items: center;" ><div>Welcome</div></h1>
+        <div style="display: flex;padding: auto;">
+            <h2 style="padding: auto;margin:auto;">Choose the Algorithm :</h2>
+            <input type="radio" id="DFS" name="Pathfinding Algorithm" value="DFS">
+            <label for="DFS">DFS</label>
+            <input type="radio" id="BFS" name="Pathfinding Algorithm" value="BFS">
+            <label for="BFS">BFSAsync</label>
+            <input type="radio" id="BFSq" name="Pathfinding Algorithm" value="BFSq">
+            <label for="BFSq">BFSQueue</label>
+        </div>
+    </div>
+    
+    <div class="main"></div>
+    <div class="buttons">
+        <div style="display: flex;padding: auto;width: 37%;justify-content: space-between ;">
+            <h2 style="padding: auto;margin:auto;">Choose the Mode : </h2>
+            <button onclick="Border()">Set Border</button>
+            <button onclick="Start_point()">Set Start-Point</button>
+            <button onclick="End_point()">Set End-Point</button>
+        </div>
+        <div style="padding: auto;">
+        <div style="padding: auto;margin:auto;">
+            <button onclick="gen()" >Refresh</button>
+            <button onclick="Solve()" >Solve</button>
+        </div>
+        </div>
+    </div>
+</body>
+</html>
+
