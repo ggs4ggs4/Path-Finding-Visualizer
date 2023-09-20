@@ -2,12 +2,13 @@
 //=========================================================================
 let heading = document.querySelector(".heading");
 let main = document.querySelector(".main");
+let main1 = document.querySelector(".main1");
 let buttons = document.querySelector(".buttons");
-let width = screen.width;
-let height = screen.height;
+let width = main1.offsetWidth;
+let height = main1.offsetHeight;
 // console.log(height)
-let rowcount = Math.floor((height-heading.offsetHeight-buttons.offsetHeight)/22)-4;
-let columncount = Math.floor((width)/22);
+let rowcount = Math.floor((height)/20);
+let columncount = Math.floor((width)/20);
 let flag = false;
 let borderflag = false;
 let startflag = false;
