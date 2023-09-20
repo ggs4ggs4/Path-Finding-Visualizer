@@ -6,8 +6,8 @@ let buttons = document.querySelector(".buttons");
 let width = screen.width;
 let height = screen.height;
 // console.log(height)
-let rowcount = Math.floor((height-heading.offsetHeight-buttons.offsetHeight)/21.63)-4;
-let columncount = Math.floor((width)/21.6);
+let rowcount = Math.floor((height-heading.offsetHeight-buttons.offsetHeight)/22)-4;
+let columncount = Math.floor((width)/22);
 let flag = false;
 let borderflag = false;
 let startflag = false;
