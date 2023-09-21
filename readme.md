@@ -7,7 +7,6 @@
 
 - The board is automatically scaled as per you screen resolution. Remember to select the algorithm to visualise.
 
-![Path Finding Visualiser](Screenshot 2023-09-21 150140.png)
-<img path="Screenshot 2023-09-21 150140.png"/>
+![Path Finding Visualiser](Screenshot 2023-09-21 150140.png "Example")
 
 **<p align='center'>You can find the website live <a href="https://ggs4ggs4.github.io/Path-Finding-Visualizer/">here</a></p>**
